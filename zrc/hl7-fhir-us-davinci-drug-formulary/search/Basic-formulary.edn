@@ -1,0 +1,10 @@
+{ns hl7-fhir-us-davinci-drug-formulary.search.Basic-formulary,
+ import #{zen.fhir},
+ search
+ {:zen/tags #{zen.fhir/search},
+  :fhir/id "Basic-formulary",
+  :fhir/url
+  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-formulary",
+  :fhir/type "reference",
+  :name "formulary",
+  :expr {:Basic {:jsonpath [], :data-types #{}, :template :reference}}}}

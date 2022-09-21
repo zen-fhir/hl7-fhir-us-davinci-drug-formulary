@@ -1,0 +1,29 @@
+{ns
+ hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-drug-name,
+ import #{zen.fhir},
+ search
+ {:zen/tags #{zen.fhir/search},
+  :fhir/id "MedicationKnowledge-drug-name",
+  :fhir/url
+  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/MedicationKnowledge-drug-name",
+  :fhir/type "string",
+  :name "drug-name",
+  :expr
+  {:MedicationKnowledge
+   {:knife [["code" "coding" "display"]],
+    :jsonpath ["$.\"code\".\"coding\".\"display\"[*]"],
+    :data-types #{},
+    :template :string,
+    :sql
+    {:where
+     [:or
+      [:ilike
+       [:pg/cast
+        [:pg/jsonb-path-query-array
+         [:pg/sql "{{table}}.resource"]
+         [:pg/cast
+          "($.\"code\".\"coding\".\"display\"[*]).** ? (@.type() == \"string\")"
+          :jsonpath]]
+        :text]
+       [:pg/sql "{{param}}"]]],
+     :parameter-format "%\"?%"}}}}}

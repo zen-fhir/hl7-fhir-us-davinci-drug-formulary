@@ -1,0 +1,16 @@
+{ns hl7-fhir-us-davinci-drug-formulary.search.Basic-lastupdated,
+ import #{zen.fhir},
+ search
+ {:zen/tags #{zen.fhir/search},
+  :fhir/id "Basic-lastupdated",
+  :fhir/url
+  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-lastupdated",
+  :fhir/type "date",
+  :name "_lastUpdated",
+  :expr
+  {:Basic
+   {:knife [["meta" "lastUpdated"]],
+    :jsonpath ["$.\"meta\".\"lastUpdated\"[*]"],
+    :data-types #{},
+    :template :date,
+    :sql {:where [:or]}}}}}

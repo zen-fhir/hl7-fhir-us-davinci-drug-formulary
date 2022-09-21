@@ -1,0 +1,103 @@
+{ns hl7-fhir-us-davinci-drug-formulary.usdf-Formulary,
+ import
+ #{hl7-fhir-r4-core.Period
+   hl7-fhir-r4-core.BackboneElement
+   hl7-fhir-r4-core.code
+   zen.fhir
+   hl7-fhir-r4-core.string
+   hl7-fhir-r4-core.instant
+   hl7-fhir-r4-core.InsurancePlan
+   hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyTypeVS
+   hl7-fhir-r4-core.Meta
+   hl7-fhir-r4-core.Element
+   hl7-fhir-r4-core.CodeableConcept
+   hl7-fhir-r4-core.Identifier
+   hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS},
+ schema
+ {:zen.fhir/version "0.5.21-6",
+  :confirms #{hl7-fhir-r4-core.InsurancePlan/schema zen.fhir/Resource},
+  :zen/tags #{zen.fhir/profile-schema zen/schema},
+  :zen.fhir/profileUri
+  "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-Formulary",
+  :require #{:type :status :identifier},
+  :type zen/map,
+  :zen/desc
+  "The Formulary provides general information about a formulary and acts as an organizing construct that associated FormularyItem resources point to. The Formulary combined with its associated FormularyItem and FormularyDrug resources represent a formulary list that includes the set of drugs covered and the requirements and limitations of the coverage.",
+  :keys
+  {:meta
+   {:confirms #{hl7-fhir-r4-core.Meta/schema},
+    :type zen/map,
+    :keys
+    {:lastUpdated {:confirms #{hl7-fhir-r4-core.instant/schema}},
+     :_lastUpdated {:confirms #{hl7-fhir-r4-core.Element/schema}}},
+    :require #{:lastUpdated}},
+   :name
+   {:confirms #{hl7-fhir-r4-core.string/schema}, :fhir/flags #{:MS}},
+   :_status {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :type
+   {:type zen/vector,
+    :every
+    {:match
+     {:coding
+      #{{:system "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+         :code "DRUGPOL"}}},
+     :confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+     :fhir/flags #{:MS},
+     :zen/desc "Plan type"},
+    :minItems 1,
+    :maxItems 1},
+   :status
+   {:confirms #{hl7-fhir-r4-core.code/schema}, :fhir/flags #{:MS}},
+   :_name {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :identifier
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.Identifier/schema},
+     :fhir/flags #{:MS}},
+    :minItems 1},
+   :period
+   {:confirms #{hl7-fhir-r4-core.Period/schema}, :fhir/flags #{:MS}},
+   :plan
+   {:type zen/vector,
+    :every
+    {:confirms #{hl7-fhir-r4-core.BackboneElement/schema},
+     :type zen/map,
+     :keys
+     {:type
+      {:match
+       {:coding
+        #{{:system
+           "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-PlanTypeCS",
+           :code "drug"}}},
+       :confirms #{hl7-fhir-r4-core.CodeableConcept/schema}},
+      :specificCost
+      {:type zen/vector,
+       :every
+       {:confirms #{hl7-fhir-r4-core.BackboneElement/schema},
+        :type zen/map,
+        :keys
+        {:category
+         {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+          :zen.fhir/value-set
+          {:symbol
+           hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyTypeVS/value-set,
+           :strength :extensible}},
+         :benefit
+         {:type zen/vector,
+          :every
+          {:confirms #{hl7-fhir-r4-core.BackboneElement/schema},
+           :type zen/map,
+           :keys
+           {:type
+            {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
+             :zen.fhir/value-set
+             {:symbol
+              hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS/value-set,
+              :strength :extensible}}},
+           :zen/desc "Drug tier benefit"}}},
+        :zen/desc "Pharmacy network type specific cost"}}},
+     :require #{:type},
+     :zen/desc
+     "Optional non-cost related plan information indicating pharmacy network types and drug tiers available in the formulary"},
+    :maxItems 1}},
+  :zen.fhir/type "InsurancePlan"}}

@@ -1,0 +1,42 @@
+{ns hl7-fhir-us-davinci-drug-formulary.usdf-InsurancePlanLocation,
+ import
+ #{zen.fhir
+   hl7-fhir-r4-core.string
+   hl7-fhir-r4-core.instant
+   hl7-fhir-r4-core.location-boundary-geojson
+   hl7-fhir-r4-core.Meta
+   hl7-fhir-r4-core.Element
+   hl7-fhir-r4-core.Location
+   hl7-fhir-r4-core.Address},
+ schema
+ {:zen/tags #{zen.fhir/profile-schema zen/schema},
+  :zen/desc
+  "A Location describing a geographic region or are where the insurance plan coverage is available.",
+  :zen.fhir/type "Location",
+  :zen.fhir/profileUri
+  "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-InsurancePlanLocation",
+  :zen.fhir/version "0.5.21-6",
+  :confirms #{hl7-fhir-r4-core.Location/schema zen.fhir/Resource},
+  :type zen/map,
+  :keys
+  {:meta
+   {:confirms #{hl7-fhir-r4-core.Meta/schema},
+    :type zen/map,
+    :keys
+    {:lastUpdated {:confirms #{hl7-fhir-r4-core.instant/schema}},
+     :_lastUpdated {:confirms #{hl7-fhir-r4-core.Element/schema}}},
+    :require #{:lastUpdated}},
+   :region
+   {:confirms #{hl7-fhir-r4-core.location-boundary-geojson/schema},
+    :fhir/extensionUri
+    "http://hl7.org/fhir/StructureDefinition/location-boundary-geojson",
+    :fhir/flags #{:MS},
+    :zen/desc "Associated Region (GeoJSON)"},
+   :name
+   {:confirms #{hl7-fhir-r4-core.string/schema}, :fhir/flags #{:MS}},
+   :_name {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :description
+   {:confirms #{hl7-fhir-r4-core.string/schema}, :fhir/flags #{:MS}},
+   :_description {:confirms #{hl7-fhir-r4-core.Element/schema}},
+   :address
+   {:confirms #{hl7-fhir-r4-core.Address/schema}, :fhir/flags #{:MS}}}}}

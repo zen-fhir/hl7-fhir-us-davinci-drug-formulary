@@ -1,0 +1,29 @@
+{ns
+ hl7-fhir-us-davinci-drug-formulary.usdf-QuantityLimitDetail-extension,
+ import
+ #{zen.fhir
+   hl7-fhir-r4-core.Timing
+   hl7-fhir-r4-core.string
+   hl7-fhir-r4-core.Quantity},
+ schema
+ {:zen/tags #{zen/schema zen.fhir/structure-schema},
+  :zen/desc
+  "An indication of whether and which quantity limits the coverage plan imposes on this drug. (Only include if QuantityLimit = true)",
+  :zen.fhir/profileUri
+  "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-QuantityLimitDetail-extension",
+  :zen.fhir/version "0.5.21-6",
+  :type zen/map,
+  :keys
+  {:Description
+   {:confirms #{hl7-fhir-r4-core.string/schema},
+    :zen/desc "A human readable description of quantity limits."},
+   :Rolling
+   {:confirms #{hl7-fhir-r4-core.Timing/schema},
+    :zen/desc "Indicator of dispense amount limit per time period."},
+   :MaximumDaily
+   {:confirms #{hl7-fhir-r4-core.Quantity/schema},
+    :zen/desc "Indicator of maximum daily amount."},
+   :DaysSupply
+   {:confirms #{hl7-fhir-r4-core.Timing/schema},
+    :zen/desc
+    "Indicator of number of therapy days over time period."}}}}

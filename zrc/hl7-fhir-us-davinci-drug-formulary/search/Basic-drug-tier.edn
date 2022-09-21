@@ -1,0 +1,10 @@
+{ns hl7-fhir-us-davinci-drug-formulary.search.Basic-drug-tier,
+ import #{zen.fhir},
+ search
+ {:zen/tags #{zen.fhir/search},
+  :fhir/id "Basic-drug-tier",
+  :fhir/url
+  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-drug-tier",
+  :fhir/type "token",
+  :name "drug-tier",
+  :expr {:Basic {:jsonpath [], :data-types #{}, :template :token}}}}

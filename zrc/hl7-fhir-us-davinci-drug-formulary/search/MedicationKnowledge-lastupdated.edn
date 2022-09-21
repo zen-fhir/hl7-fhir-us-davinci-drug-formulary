@@ -1,0 +1,17 @@
+{ns
+ hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-lastupdated,
+ import #{zen.fhir},
+ search
+ {:zen/tags #{zen.fhir/search},
+  :fhir/id "MedicationKnowledge-lastupdated",
+  :fhir/url
+  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/MedicationKnowledge-lastupdated",
+  :fhir/type "date",
+  :name "_lastUpdated",
+  :expr
+  {:MedicationKnowledge
+   {:knife [["meta" "lastUpdated"]],
+    :jsonpath ["$.\"meta\".\"lastUpdated\"[*]"],
+    :data-types #{},
+    :template :date,
+    :sql {:where [:or]}}}}}

@@ -1,0 +1,16 @@
+{ns
+ hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-doseform,
+ import #{zen.fhir},
+ search
+ {:zen/tags #{zen.fhir/search},
+  :fhir/id "MedicationKnowledge-doseform",
+  :fhir/url
+  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/MedicationKnowledge-doseform",
+  :fhir/type "token",
+  :name "doseform",
+  :expr
+  {:MedicationKnowledge
+   {:knife [["doseForm"]],
+    :jsonpath ["$.\"doseForm\"[*]"],
+    :data-types #{{:type "CodeableConcept", :polymorphic? false}},
+    :template :token}}}}

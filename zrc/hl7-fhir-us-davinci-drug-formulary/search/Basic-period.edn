@@ -1,0 +1,15 @@
+{ns hl7-fhir-us-davinci-drug-formulary.search.Basic-period,
+ import #{zen.fhir},
+ search
+ {:zen/tags #{zen.fhir/search},
+  :fhir/id "Basic-period",
+  :fhir/url
+  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-period",
+  :fhir/type "date",
+  :name "period",
+  :expr
+  {:Basic
+   {:jsonpath [],
+    :data-types #{},
+    :template :date,
+    :sql {:where [:or]}}}}}

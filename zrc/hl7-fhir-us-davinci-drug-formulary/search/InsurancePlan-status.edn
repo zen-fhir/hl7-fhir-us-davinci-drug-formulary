@@ -1,0 +1,15 @@
+{ns hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-status,
+ import #{zen.fhir},
+ search
+ {:zen/tags #{zen.fhir/search},
+  :fhir/id "InsurancePlan-status",
+  :fhir/url
+  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-status",
+  :fhir/type "token",
+  :name "status",
+  :expr
+  {:InsurancePlan
+   {:knife [["status"]],
+    :jsonpath ["$.\"status\"[*]"],
+    :data-types #{{:type "code", :polymorphic? false}},
+    :template :token}}}}
