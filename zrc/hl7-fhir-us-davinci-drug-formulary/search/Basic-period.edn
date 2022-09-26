@@ -9,7 +9,8 @@
   :name "period",
   :expr
   {:Basic
-   {:jsonpath [],
+   {:knife [],
+    :jsonpath [],
     :data-types #{},
     :template :date,
     :sql {:where [:or]}}}}}

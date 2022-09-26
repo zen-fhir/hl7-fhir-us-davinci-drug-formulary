@@ -7,4 +7,6 @@
   "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-pharmacy-type",
   :fhir/type "token",
   :name "pharmacy-type",
-  :expr {:Basic {:jsonpath [], :data-types #{}, :template :token}}}}
+  :expr
+  {:Basic
+   {:knife [], :jsonpath [], :data-types #{}, :template :token}}}}

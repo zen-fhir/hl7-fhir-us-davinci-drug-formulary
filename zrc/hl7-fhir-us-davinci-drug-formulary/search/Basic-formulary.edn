@@ -7,4 +7,6 @@
   "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-formulary",
   :fhir/type "reference",
   :name "formulary",
-  :expr {:Basic {:jsonpath [], :data-types #{}, :template :reference}}}}
+  :expr
+  {:Basic
+   {:knife [], :jsonpath [], :data-types #{}, :template :reference}}}}

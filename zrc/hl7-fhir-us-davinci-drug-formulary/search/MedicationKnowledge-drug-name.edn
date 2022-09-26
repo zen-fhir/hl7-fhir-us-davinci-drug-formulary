@@ -10,8 +10,9 @@
   :name "drug-name",
   :expr
   {:MedicationKnowledge
-   {:knife [["code" "coding" "display"]],
-    :jsonpath ["$.\"code\".\"coding\".\"display\"[*]"],
+   {:knife [["code" "coding" "display"] ["synonym"]],
+    :jsonpath
+    ["$.\"code\".\"coding\".\"display\"[*]" "$.\"synonym\"[*]"],
     :data-types #{},
     :template :string,
     :sql
@@ -23,6 +24,15 @@
          [:pg/sql "{{table}}.resource"]
          [:pg/cast
           "($.\"code\".\"coding\".\"display\"[*]).** ? (@.type() == \"string\")"
+          :jsonpath]]
+        :text]
+       [:pg/sql "{{param}}"]]
+      [:ilike
+       [:pg/cast
+        [:pg/jsonb-path-query-array
+         [:pg/sql "{{table}}.resource"]
+         [:pg/cast
+          "($.\"synonym\"[*]).** ? (@.type() == \"string\")"
           :jsonpath]]
         :text]
        [:pg/sql "{{param}}"]]],

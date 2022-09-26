@@ -10,4 +10,4 @@
   :name "formulary-coverage",
   :expr
   {:InsurancePlan
-   {:jsonpath [], :data-types #{}, :template :reference}}}}
+   {:knife [], :jsonpath [], :data-types #{}, :template :reference}}}}
