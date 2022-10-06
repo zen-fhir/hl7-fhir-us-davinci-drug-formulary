@@ -1,0 +1,13 @@
+{ns
+ hl7-fhir-us-davinci-drug-formulary.usdf-AdditionalCoverageInformation-extension,
+ import #{hl7-fhir-r4-core.markdown zen.fhir},
+ schema
+ {:zen/tags #{zen/schema zen.fhir/structure-schema},
+  :zen/desc
+  "Additional drug coverage information that may include conditional coverage requirements such as a diagnosis pre-requisite, additional drug specific cost sharing information, or other coverage details not otherwise indicated.",
+  :zen.fhir/type "markdown",
+  :zen.fhir/profileUri
+  "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AdditionalCoverageInformation-extension",
+  :zen.fhir/version "0.5.22-1",
+  :confirms #{hl7-fhir-r4-core.markdown/schema},
+  :fhir/flags #{:MS}}}

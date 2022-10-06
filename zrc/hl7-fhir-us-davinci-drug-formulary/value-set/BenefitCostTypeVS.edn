@@ -3,11 +3,11 @@
  value-set
  {:zen/tags #{zen.fhir/value-set},
   :zen/desc "Benefit type of cost",
-  :zen.fhir/version "0.5.22",
+  :zen.fhir/version "0.5.22-1",
   :fhir/code-systems
   #{{:fhir/url
-     "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-BenefitCostTypeCS",
+     "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-BenefitCostTypeCS-TEMPORARY-TRIAL-USE",
      :zen.fhir/content :bundled}},
   :uri
   "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/BenefitCostTypeVS",
-  :version "1.2.0"}}
+  :version "2.0.0"}}

@@ -7,14 +7,14 @@
    hl7-fhir-r4-core.string
    hl7-fhir-r4-core.instant
    hl7-fhir-r4-core.InsurancePlan
-   hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyTypeVS
    hl7-fhir-r4-core.Meta
    hl7-fhir-r4-core.Element
+   hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyBenefitTypeVS
    hl7-fhir-r4-core.CodeableConcept
    hl7-fhir-r4-core.Identifier
    hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS},
  schema
- {:zen.fhir/version "0.5.22",
+ {:zen.fhir/version "0.5.22-1",
   :confirms #{hl7-fhir-r4-core.InsurancePlan/schema zen.fhir/Resource},
   :zen/tags #{zen.fhir/profile-schema zen/schema},
   :zen.fhir/profileUri
@@ -28,7 +28,9 @@
    {:confirms #{hl7-fhir-r4-core.Meta/schema},
     :type zen/map,
     :keys
-    {:lastUpdated {:confirms #{hl7-fhir-r4-core.instant/schema}},
+    {:lastUpdated
+     {:confirms #{hl7-fhir-r4-core.instant/schema},
+      :fhir/flags #{:MS}},
      :_lastUpdated {:confirms #{hl7-fhir-r4-core.Element/schema}}},
     :require #{:lastUpdated}},
    :name
@@ -67,8 +69,9 @@
       {:match
        {:coding
         #{{:system
-           "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-PlanTypeCS",
-           :code "drug"}}},
+           "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+           :code "Drug",
+           :display "Drug"}}},
        :confirms #{hl7-fhir-r4-core.CodeableConcept/schema}},
       :specificCost
       {:type zen/vector,
@@ -80,7 +83,7 @@
          {:confirms #{hl7-fhir-r4-core.CodeableConcept/schema},
           :zen.fhir/value-set
           {:symbol
-           hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyTypeVS/value-set,
+           hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyBenefitTypeVS/value-set,
            :strength :extensible}},
          :benefit
          {:type zen/vector,
@@ -95,9 +98,9 @@
               hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS/value-set,
               :strength :extensible}}},
            :zen/desc "Drug tier benefit"}}},
-        :zen/desc "Pharmacy network type specific cost"}}},
+        :zen/desc "Pharmacy benefit type specific cost"}}},
      :require #{:type},
      :zen/desc
-     "Optional non-cost related plan information indicating pharmacy network types and drug tiers available in the formulary"},
+     "Optional non-cost related plan information indicating pharmacy benefit types and drug tiers available in the formulary"},
     :maxItems 1}},
   :zen.fhir/type "InsurancePlan"}}

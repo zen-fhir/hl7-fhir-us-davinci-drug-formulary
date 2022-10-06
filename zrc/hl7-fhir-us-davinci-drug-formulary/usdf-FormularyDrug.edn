@@ -9,7 +9,7 @@
    hl7-fhir-r4-core.CodeableConcept
    hl7-fhir-r4-core.MedicationKnowledge},
  schema
- {:zen.fhir/version "0.5.22",
+ {:zen.fhir/version "0.5.22-1",
   :confirms
   #{hl7-fhir-r4-core.MedicationKnowledge/schema zen.fhir/Resource},
   :zen/tags #{zen.fhir/profile-schema zen/schema},
@@ -24,7 +24,9 @@
    {:confirms #{hl7-fhir-r4-core.Meta/schema},
     :type zen/map,
     :keys
-    {:lastUpdated {:confirms #{hl7-fhir-r4-core.instant/schema}},
+    {:lastUpdated
+     {:confirms #{hl7-fhir-r4-core.instant/schema},
+      :fhir/flags #{:MS}},
      :_lastUpdated {:confirms #{hl7-fhir-r4-core.Element/schema}}},
     :require #{:lastUpdated}},
    :code

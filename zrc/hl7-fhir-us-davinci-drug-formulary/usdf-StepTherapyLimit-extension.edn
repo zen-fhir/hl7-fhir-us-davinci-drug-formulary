@@ -3,9 +3,9 @@
  schema
  {:zen/tags #{zen/schema zen.fhir/structure-schema},
   :zen/desc
-  "A Boolean indication of whether the coverage plan imposes a step therapy limit on this drug.",
+  "A boolean indicating whether the coverage plan imposes a step therapy requirement on this drug meaning another drug may need to be tried beforehand.",
   :zen.fhir/type "boolean",
   :zen.fhir/profileUri
   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-StepTherapyLimit-extension",
-  :zen.fhir/version "0.5.22",
+  :zen.fhir/version "0.5.22-1",
   :confirms #{hl7-fhir-r4-core.boolean/schema}}}

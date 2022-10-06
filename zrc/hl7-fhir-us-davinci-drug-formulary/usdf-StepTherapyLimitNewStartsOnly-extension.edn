@@ -4,9 +4,9 @@
  schema
  {:zen/tags #{zen/schema zen.fhir/structure-schema},
   :zen/desc
-  "A Boolean indication of whether the coverage plan imposes a step therapy limit on this drug for new starts only. (Only include if StepTherapyLimit = true)",
+  "A boolean indicating whether the coverage plan imposes a step therapy requirement on this drug meaning another drug may need to be tried beforehand for new starts only (Not required if patient has previously met step therapy requirements).  (Only include if StepTherapyLimit = true)",
   :zen.fhir/type "boolean",
   :zen.fhir/profileUri
   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-StepTherapyLimitNewStartsOnly-extension",
-  :zen.fhir/version "0.5.22",
+  :zen.fhir/version "0.5.22-1",
   :confirms #{hl7-fhir-r4-core.boolean/schema}}}
