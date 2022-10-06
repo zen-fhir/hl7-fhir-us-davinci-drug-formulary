@@ -5,7 +5,7 @@
  {:zen/tags #{zen.fhir/value-set},
   :zen/desc
   "Semantic Drug Form Group codes with Term Types (TTY) of Semantic Clinical Drug Form (SCDG) and Semantic Branded Drug Form Group (SBDG)",
-  :zen.fhir/version "0.5.21-14",
+  :zen.fhir/version "0.5.22",
   :fhir/code-systems
   #{{:fhir/url "http://www.nlm.nih.gov/research/umls/rxnorm",
      :zen.fhir/content :not-present}},
