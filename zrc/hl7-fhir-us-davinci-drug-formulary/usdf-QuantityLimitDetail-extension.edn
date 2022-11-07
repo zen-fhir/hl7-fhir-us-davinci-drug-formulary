@@ -11,7 +11,7 @@
   "A detailed definition of the quantity limits the coverage plan imposes on this drug. These limit details may include (potentially including a rolling dispense limit, maximum daily, or therapy days for a period of time. (Only include if QuantityLimit = true)",
   :zen.fhir/profileUri
   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-QuantityLimitDetail-extension",
-  :zen.fhir/version "0.5.31",
+  :zen.fhir/version "0.5.31-1",
   :type zen/map,
   :keys
   {:Description
