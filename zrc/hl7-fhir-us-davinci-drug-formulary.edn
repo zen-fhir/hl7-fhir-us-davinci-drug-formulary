@@ -1,56 +1,153 @@
 {ns hl7-fhir-us-davinci-drug-formulary,
  import
- #{hl7-fhir-us-davinci-drug-formulary.search.Basic-period
-   hl7-fhir-us-davinci-drug-formulary.search.Basic-pharmacy-benefit-type
-   hl7-fhir-us-davinci-drug-formulary.value-set.InsuranceItemTypeVS
-   hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-period
-   hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-name
-   hl7-fhir-us-davinci-drug-formulary.usdf-FormularyBulkDataGraphDefinition
-   hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-drug-name
-   hl7-fhir-us-davinci-drug-formulary.value-set.CopayOptionVS
-   hl7-fhir-us-davinci-drug-formulary.usdf-StepTherapyLimitNewStartsOnly-extension
-   hl7-fhir-us-davinci-drug-formulary.usdf-FormularyDrug
-   hl7-fhir-us-davinci-drug-formulary.value-set.CoinsuranceOptionVS
-   hl7-fhir-us-davinci-drug-formulary.usdf-PharmacyBenefitType-extension
-   hl7-fhir-us-davinci-drug-formulary.search.Basic-status
+ #{zen.fhir
    hl7-fhir-r4-core
-   hl7-fhir-us-davinci-drug-formulary.search.Basic-drug-tier
-   hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-status
-   hl7-fhir-us-davinci-drug-formulary.usdf-AdditionalCoverageInformation-extension
-   hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-coverage-type
-   hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-lastupdated
-   hl7-fhir-us-davinci-drug-formulary.search.Basic-formulary
-   hl7-fhir-us-davinci-drug-formulary.value-set.SemanticDrugFormGroupVS
-   hl7-fhir-us-davinci-drug-formulary.usdf-AvailabilityPeriod-extension
    hl7-terminology-r4
-   hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-type
-   hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-status
-   hl7-fhir-us-davinci-drug-formulary.usdf-DrugTierID-extension
-   hl7-fhir-us-davinci-drug-formulary.usdf-PayerInsurancePlan
-   hl7-fhir-us-davinci-drug-formulary.usdf-FormularyItem
-   hl7-fhir-us-davinci-drug-formulary.usdf-FormularyReference-extension
    hl7-fhir-us-davinci-hrex
-   hl7-fhir-us-davinci-drug-formulary.value-set.BenefitCostTypeVS
-   hl7-fhir-us-davinci-drug-formulary.usdf-PriorAuthorization-extension
-   hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-code
-   hl7-fhir-us-davinci-drug-formulary.usdf-Formulary
-   hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-lastupdated
-   hl7-fhir-us-davinci-drug-formulary.value-set.SemanticDrugVS
-   hl7-fhir-us-davinci-drug-formulary.usdf-StepTherapyLimit-extension
-   hl7-fhir-us-davinci-drug-formulary.search.Basic-lastupdated
-   hl7-fhir-us-davinci-drug-formulary.usdf-QuantityLimitDetail-extension
-   hl7-fhir-us-davinci-drug-formulary.usdf-PriorAuthorizationNewStartsOnly-extension
-   hl7-fhir-us-davinci-pdex-plan-net
-   hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-formulary-coverage
-   hl7-fhir-us-davinci-drug-formulary.value-set.PlanContactTypeVS
-   hl7-fhir-us-davinci-drug-formulary.search.Basic-code
-   hl7-fhir-us-davinci-drug-formulary.usdf-QuantityLimit-extension
-   hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyBenefitTypeVS
-   hl7-fhir-us-davinci-drug-formulary.usdf-AvailabilityStatus-extension
-   hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-identifier
-   hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS
-   hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-coverage-area
-   hl7-fhir-us-davinci-drug-formulary.search.Basic-subject
-   hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-doseform
-   hl7-fhir-us-davinci-drug-formulary.usdf-PayerInsurancePlanBulkDataGraphDefinition
-   hl7-fhir-us-davinci-drug-formulary.usdf-InsurancePlanLocation}}
+   hl7-fhir-us-davinci-pdex-plan-net},
+ extensions
+ {:zen/tags #{zen.fhir/extensions},
+  :schemas
+  {"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-QuantityLimitDetail-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-QuantityLimitDetail-extension/schema}},
+ ig
+ {:zen/tags #{zen.fhir/ig},
+  :profiles profiles,
+  :extensions extensions,
+  :structures structures,
+  :value-sets value-sets,
+  :searches searches},
+ profiles
+ {:zen/tags #{zen.fhir/profiles},
+  :schemas
+  {"GraphDefinition"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PayerInsurancePlanBulkDataGraphDefinition"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-PayerInsurancePlanBulkDataGraphDefinition/schema,
+    "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyBulkDataGraphDefinition"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-FormularyBulkDataGraphDefinition/schema},
+   "InsurancePlan"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-Formulary"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-Formulary/schema,
+    "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PayerInsurancePlan"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-PayerInsurancePlan/schema},
+   "Basic"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyItem"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-FormularyItem/schema},
+   "Location"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-InsurancePlanLocation"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-InsurancePlanLocation/schema},
+   "MedicationKnowledge"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyDrug"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-FormularyDrug/schema}}},
+ searches
+ {:zen/tags #{zen.fhir/searches},
+  :searches
+  {"USDFInsurancePlanFormularyCoverage"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-formulary-coverage"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-formulary-coverage/search},
+   "USDFMedicationKnowledgeDrugName"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/MedicationKnowledge-drug-name"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-drug-name/search},
+   "USDFBasicPharmacyBenefitType"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-pharmacy-benefit-type"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.Basic-pharmacy-benefit-type/search},
+   "USDFBasicDrugTier"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-drug-tier"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.Basic-drug-tier/search},
+   "USDFMedicationKnowledgeStatus"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/MedicationKnowledge-status"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-status/search},
+   "USDFInsurancePlanLastUpdated"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-lastupdated"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-lastupdated/search,
+    "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-identifier"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-identifier/search},
+   "USDFBasicLastUpdated"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-lastupdated"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.Basic-lastupdated/search},
+   "USDFInsurancePlanStatus"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-status"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-status/search},
+   "USDFMedicationKnowledgeLastUpdated"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/MedicationKnowledge-lastupdated"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-lastupdated/search},
+   "USDFInsurancePlanCoverageType"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-coverage-type"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-coverage-type/search},
+   "USDFBasicFormulary"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-formulary"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.Basic-formulary/search},
+   "USDFInsurancePlanPeriod"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-period"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-period/search},
+   "USDFMedicationKnowledgeCode"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/MedicationKnowledge-doseform"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-doseform/search,
+    "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/MedicationKnowledge-code"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.MedicationKnowledge-code/search},
+   "USDFInsurancePlanCoverageArea"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-coverage-area"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-coverage-area/search},
+   "USDFInsurancePlanName"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-name"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-name/search},
+   "USDFBasicCode"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-subject"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.Basic-subject/search,
+    "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-code"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.Basic-code/search},
+   "USDFBasicPeriod"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-period"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.Basic-period/search},
+   "USDFInsurancePlanType"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-type"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-type/search},
+   "USDFBasicStatus"
+   {"http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-status"
+    #zen/quote hl7-fhir-us-davinci-drug-formulary.search.Basic-status/search}}},
+ structures
+ {:zen/tags #{zen.fhir/structures},
+  :schemas
+  {"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PriorAuthorizationNewStartsOnly-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-PriorAuthorizationNewStartsOnly-extension/schema,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-DrugTierID-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-DrugTierID-extension/schema,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AvailabilityPeriod-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-AvailabilityPeriod-extension/schema,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-QuantityLimit-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-QuantityLimit-extension/schema,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AvailabilityStatus-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-AvailabilityStatus-extension/schema,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PharmacyBenefitType-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-PharmacyBenefitType-extension/schema,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PriorAuthorization-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-PriorAuthorization-extension/schema,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AdditionalCoverageInformation-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-AdditionalCoverageInformation-extension/schema,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-StepTherapyLimit-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-StepTherapyLimit-extension/schema,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-FormularyReference-extension/schema,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-StepTherapyLimitNewStartsOnly-extension"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.usdf-StepTherapyLimitNewStartsOnly-extension/schema}},
+ value-sets
+ {:zen/tags #{zen.fhir/value-sets},
+  :value-sets
+  {"http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/CopayOptionVS"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.value-set.CopayOptionVS/value-set,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/DrugTierVS"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS/value-set,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/SemanticDrugFormGroupVS"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.value-set.SemanticDrugFormGroupVS/value-set,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/InsuranceItemTypeVS"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.value-set.InsuranceItemTypeVS/value-set,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/BenefitCostTypeVS"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.value-set.BenefitCostTypeVS/value-set,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/CoinsuranceOptionVS"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.value-set.CoinsuranceOptionVS/value-set,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/PlanContactTypeVS"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.value-set.PlanContactTypeVS/value-set,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/PharmacyBenefitTypeVS"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyBenefitTypeVS/value-set,
+   "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/SemanticDrugVS"
+   #zen/quote hl7-fhir-us-davinci-drug-formulary.value-set.SemanticDrugVS/value-set}}}
