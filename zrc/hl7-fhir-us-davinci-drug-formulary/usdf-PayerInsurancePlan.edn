@@ -28,7 +28,7 @@
    hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS
    hl7-fhir-us-davinci-drug-formulary.usdf-InsurancePlanLocation},
  schema
- {:zen.fhir/version "0.6.1",
+ {:zen.fhir/version "0.6.2",
   :confirms #{hl7-fhir-r4-core.InsurancePlan/schema zen.fhir/Resource},
   :zen/tags #{zen.fhir/profile-schema zen/schema},
   :zen.fhir/profileUri
@@ -261,7 +261,8 @@
                          :_code
                          {:confirms
                           #{hl7-fhir-r4-core.Element/schema}}},
-                        :require #{:value}}}}},
+                        :require #{:value}}},
+                      :require #{:qualifiers}}},
                     :filter
                     {:engine :match,
                      :match
@@ -309,7 +310,8 @@
                           :confirms #{hl7-fhir-r4-core.code/schema}},
                          :_code
                          {:confirms
-                          #{hl7-fhir-r4-core.Element/schema}}}}}}},
+                          #{hl7-fhir-r4-core.Element/schema}}}}},
+                      :require #{:qualifiers}}},
                     :filter
                     {:engine :match,
                      :match
