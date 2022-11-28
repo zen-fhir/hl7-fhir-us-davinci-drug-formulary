@@ -1,12 +1,8 @@
 {ns hl7-fhir-us-davinci-drug-formulary.usdf-InsurancePlanLocation,
  import
  #{zen.fhir
-   hl7-fhir-r4-core.instant
    hl7-fhir-r4-core.location-boundary-geojson
-   hl7-fhir-r4-core.Meta
-   hl7-fhir-r4-core.Element
-   hl7-fhir-r4-core.Location
-   hl7-fhir-r4-core.Address},
+   hl7-fhir-r4-core.Location},
  schema
  {:zen/tags #{zen.fhir/profile-schema zen/schema},
   :zen/desc
@@ -14,17 +10,11 @@
   :zen.fhir/type "Location",
   :zen.fhir/profileUri
   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-InsurancePlanLocation",
-  :zen.fhir/version "0.6.3",
+  :zen.fhir/version "0.6.4",
   :confirms #{hl7-fhir-r4-core.Location/schema zen.fhir/Resource},
   :type zen/map,
   :keys
-  {:meta
-   {:confirms #{hl7-fhir-r4-core.Meta/schema},
-    :type zen/map,
-    :keys
-    {:lastUpdated {:confirms #{hl7-fhir-r4-core.instant/schema}},
-     :_lastUpdated {:confirms #{hl7-fhir-r4-core.Element/schema}}},
-    :require #{:lastUpdated}},
+  {:meta {:type zen/map, :keys {}, :require #{:lastUpdated}},
    :region
    {:confirms #{hl7-fhir-r4-core.location-boundary-geojson/schema},
     :fhir/extensionUri
@@ -33,7 +23,6 @@
     :zen/desc
     "Associated Region (GeoJSON) [MustSupport for this element is optional if there is support for address]"},
    :address
-   {:confirms #{hl7-fhir-r4-core.Address/schema},
-    :fhir/flags #{:MS},
+   {:fhir/flags #{:MS},
     :zen/desc
     "Physical location [MustSupport for this element is optional if there is support for Extension:location-boundary-geojson]"}}}}

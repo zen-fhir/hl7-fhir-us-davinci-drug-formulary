@@ -7,21 +7,16 @@
    hl7-fhir-us-davinci-drug-formulary.usdf-AdditionalCoverageInformation-extension
    hl7-fhir-us-davinci-drug-formulary.usdf-AvailabilityPeriod-extension
    hl7-fhir-r4-core.Basic
-   hl7-fhir-r4-core.instant
    hl7-fhir-us-davinci-drug-formulary.usdf-DrugTierID-extension
    hl7-fhir-us-davinci-drug-formulary.usdf-FormularyReference-extension
    hl7-fhir-us-davinci-drug-formulary.usdf-PriorAuthorization-extension
-   hl7-fhir-r4-core.Meta
-   hl7-fhir-r4-core.Reference
    hl7-fhir-us-davinci-drug-formulary.usdf-StepTherapyLimit-extension
-   hl7-fhir-r4-core.Element
    hl7-fhir-us-davinci-drug-formulary.usdf-QuantityLimitDetail-extension
    hl7-fhir-us-davinci-drug-formulary.usdf-PriorAuthorizationNewStartsOnly-extension
    hl7-fhir-us-davinci-drug-formulary.usdf-QuantityLimit-extension
-   hl7-fhir-r4-core.CodeableConcept
    hl7-fhir-us-davinci-drug-formulary.usdf-AvailabilityStatus-extension},
  schema
- {:zen.fhir/version "0.6.3",
+ {:zen.fhir/version "0.6.4",
   :confirms #{hl7-fhir-r4-core.Basic/schema zen.fhir/Resource},
   :zen/tags #{zen.fhir/profile-schema zen/schema},
   :zen.fhir/profileUri
@@ -37,13 +32,8 @@
   "A resource that describes a drug's relationship to a drug plan, including drug tier, prior authorization requirements, and more. The set of FormularyItem resources associated with a particular drug plan represents the drug plans formulary.",
   :keys
   {:meta
-   {:confirms #{hl7-fhir-r4-core.Meta/schema},
-    :type zen/map,
-    :keys
-    {:lastUpdated
-     {:confirms #{hl7-fhir-r4-core.instant/schema},
-      :fhir/flags #{:MS}},
-     :_lastUpdated {:confirms #{hl7-fhir-r4-core.Element/schema}}},
+   {:type zen/map,
+    :keys {:lastUpdated #:fhir{:flags #{:MS}}},
     :require #{:lastUpdated}},
    :usdf-AdditionalCoverageInformation-extension
    {:confirms
@@ -90,8 +80,7 @@
     {:coding
      #{{:system
         "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-InsuranceItemTypeCS",
-        :code "formulary-item"}}},
-    :confirms #{hl7-fhir-r4-core.CodeableConcept/schema}},
+        :code "formulary-item"}}}},
    :usdf-PriorAuthorizationNewStartsOnly-extension
    {:confirms
     #{hl7-fhir-us-davinci-drug-formulary.usdf-PriorAuthorizationNewStartsOnly-extension/schema},
@@ -119,8 +108,8 @@
     "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension",
     :fhir/flags #{:MS}},
    :subject
-   {:confirms #{hl7-fhir-r4-core.Reference/schema zen.fhir/Reference},
-    :fhir/flags #{:MS},
+   {:fhir/flags #{:MS},
+    :confirms #{zen.fhir/Reference},
     :zen.fhir/reference
     {:refers
      #{hl7-fhir-us-davinci-drug-formulary.usdf-FormularyDrug/schema}}},
