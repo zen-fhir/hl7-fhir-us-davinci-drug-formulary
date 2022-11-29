@@ -8,7 +8,7 @@
   :zen.fhir/type "GraphDefinition",
   :zen.fhir/profileUri
   "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PayerInsurancePlanBulkDataGraphDefinition",
-  :zen.fhir/version "0.6.4",
+  :zen.fhir/version "0.6.5",
   :confirms
   #{zen.fhir/Resource hl7-fhir-r4-core.GraphDefinition/schema},
   :type zen/map,
@@ -17,7 +17,8 @@
    :start {:match "InsurancePlan"},
    :status {:match "active"},
    :link
-   {:slicing
+   {:type zen/vector,
+    :slicing
     {:slices
      {"location"
       {:schema
@@ -85,9 +86,7 @@
        {:engine :match,
         :match
         {:path
-         "InsurancePlan.coverage.extension.where(url=http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension).valueReference"}}}}},
-    :type zen/vector,
-    :every {}},
+         "InsurancePlan.coverage.extension.where(url=http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension).valueReference"}}}}}},
    :profile
    {:match
     "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PayerInsurancePlan"}}}}
