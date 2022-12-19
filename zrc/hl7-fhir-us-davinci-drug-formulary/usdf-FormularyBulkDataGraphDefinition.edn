@@ -1,49 +1,27 @@
-{ns
- hl7-fhir-us-davinci-drug-formulary.usdf-FormularyBulkDataGraphDefinition,
+{ns hl7-fhir-us-davinci-drug-formulary.usdf-FormularyBulkDataGraphDefinition,
  import #{zen.fhir hl7-fhir-r4-core.GraphDefinition},
- schema
- {:zen/tags #{zen.fhir/profile-schema zen/schema},
-  :zen/desc
-  "A GraphDefinition defining a graph of resources to return in a query for a Formulary related Bulk Data request.",
-  :zen.fhir/type "GraphDefinition",
-  :zen.fhir/profileUri
-  "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyBulkDataGraphDefinition",
-  :zen.fhir/version "0.6.6-7",
-  :confirms
-  #{zen.fhir/Resource hl7-fhir-r4-core.GraphDefinition/schema},
-  :type zen/map,
-  :keys
-  {:name {:match "FormularyGraphDefinition"},
-   :start {:match "InsurancePlan"},
-   :status {:match "active"},
-   :link
-   {:type zen/vector,
-    :every
-    {:type zen/map,
-     :keys
-     {:target
-      {:type zen/vector,
-       :every
-       {:type zen/map,
-        :keys
-        {:type {:match "Basic"},
-         :params {:match "formulary={ref}"},
-         :profile
-         {:match
-          "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyItem"},
-         :link
-         {:type zen/vector,
-          :every
-          {:type zen/map,
-           :keys
-           {:path {:match "Basic.subject"},
-            :target
-            {:type zen/map,
-             :keys
-             {:type {:match "MedicationKnowledge"},
-              :profile
-              {:match
-               "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyDrug"}}}}}}}}}}}},
-   :profile
-   {:match
-    "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-Formulary"}}}}
+ schema {:zen/tags #{zen.fhir/profile-schema zen/schema},
+         :zen/desc "A GraphDefinition defining a graph of resources to return in a query for a Formulary related Bulk Data request.",
+         :zen.fhir/type "GraphDefinition",
+         :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyBulkDataGraphDefinition",
+         :zen.fhir/version "0.6.6-8",
+         :confirms #{zen.fhir/Resource
+                     hl7-fhir-r4-core.GraphDefinition/schema},
+         :type zen/map,
+         :keys {:name {:match "FormularyGraphDefinition"},
+                :start {:match "InsurancePlan"},
+                :status {:match "active"},
+                :link {:type zen/vector,
+                       :every {:type zen/map,
+                               :keys {:target {:type zen/vector,
+                                               :every {:type zen/map,
+                                                       :keys {:type {:match "Basic"},
+                                                              :params {:match "formulary={ref}"},
+                                                              :profile {:match "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyItem"},
+                                                              :link {:type zen/vector,
+                                                                     :every {:type zen/map,
+                                                                             :keys {:path {:match "Basic.subject"},
+                                                                                    :target {:type zen/map,
+                                                                                             :keys {:type {:match "MedicationKnowledge"},
+                                                                                                    :profile {:match "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyDrug"}}}}}}}}}}}},
+                :profile {:match "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-Formulary"}}}}

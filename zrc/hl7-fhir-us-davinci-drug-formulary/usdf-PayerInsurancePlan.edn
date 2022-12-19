@@ -1,313 +1,170 @@
 {ns hl7-fhir-us-davinci-drug-formulary.usdf-PayerInsurancePlan,
- import
- #{hl7-fhir-us-davinci-drug-formulary.value-set.CopayOptionVS
-   hl7-fhir-us-davinci-drug-formulary.value-set.CoinsuranceOptionVS
-   zen.fhir
-   hl7-fhir-us-davinci-pdex-plan-net.value-set.InsuranceProductTypeVS
-   hl7-terminology-r4.value-set.insuranceplan-type
-   hl7-fhir-r4-core.InsurancePlan
-   hl7-fhir-us-davinci-drug-formulary.value-set.BenefitCostTypeVS
-   hl7-fhir-r4-core.MoneyQuantity
-   hl7-fhir-us-davinci-drug-formulary.value-set.PlanContactTypeVS
-   hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyBenefitTypeVS
-   hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS
-   hl7-fhir-us-davinci-drug-formulary.usdf-InsurancePlanLocation},
- schema
- {:zen.fhir/version "0.6.6-7",
-  :confirms #{hl7-fhir-r4-core.InsurancePlan/schema zen.fhir/Resource},
-  :zen/tags #{zen.fhir/profile-schema zen/schema},
-  :zen.fhir/profileUri
-  "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PayerInsurancePlan",
-  :require #{:coverage :type :status :identifier :plan},
-  :type zen/map,
-  :zen/desc
-  "The Payer InsurancePlan that defines the health insurance product, which include coverage benefits that are offered, and additional information about the offering, such as a coverage area, contact information, brochure locations, etc. The health insurance product offers one or more types of coverage, each of which may define a plan of covered benefits with the particular cost sharing structure offered to a consumer. Health insurance plans that include drug coverage reference a formulary that provides details about drugs that are covered under the plan including requirements and limitations of the coverage specific to each drug.",
-  :keys
-  {:coverageArea
-   {:type zen/vector,
-    :every
-    {:fhir/flags #{:MS},
-     :confirms #{zen.fhir/Reference},
-     :zen.fhir/reference
-     {:refers
-      #{hl7-fhir-us-davinci-drug-formulary.usdf-InsurancePlanLocation/schema}}}},
-   :meta
-   {:type zen/map,
-    :keys {:lastUpdated #:fhir{:flags #{:MS}}},
-    :require #{:lastUpdated}},
-   :name #:fhir{:flags #{:MS}},
-   :coverage
-   {:type zen/vector,
-    :slicing
-    {:slices
-     {"drug-coverage"
-      {:schema
-       {:type zen/vector,
-        :minItems 1,
-        :every
-        {:type zen/map,
-         :keys
-         {:extension #:fhir{:flags #{:MS}},
-          :type
-          {:match
-           {:coding
-            #{{:system
-               "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-               :code "DRUGPOL"}}}},
-          :benefit
-          {:type zen/vector,
-           :slicing
-           {:slices
-            {"drug-plan"
-             {:schema
-              {:type zen/vector,
-               :minItems 1,
-               :every
-               {:type zen/map,
-                :keys
-                {:type
-                 {:match
-                  {:coding
-                   #{{:system
-                      "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
-                      :code "Drug",
-                      :display "Drug"}}}}}}},
-              :filter
-              {:engine :match,
-               :match
-               {:type
-                {:coding
-                 #{{:system
-                    "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
-                    :code "Drug",
-                    :display "Drug"}}}}}}}},
-           :every
-           {:type zen/map,
-            :keys
-            {:type
-             #:zen.fhir{:value-set
-                        {:symbol
-                         hl7-terminology-r4.value-set.insuranceplan-type/value-set,
-                         :strength :extensible}}}}}},
-         :require #{:extension}}},
-       :filter
-       {:engine :match,
-        :match
-        {:type
-         {:coding
-          #{{:system
-             "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-             :code "DRUGPOL"}}}}}}}},
-    :every
-    {:type zen/map,
-     :keys {:type #:fhir{:flags #{:MS}}},
-     :fhir/flags #{:MS}},
-    :minItems 1},
-   :type
-   {:type zen/vector,
-    :every
-    {:fhir/flags #{:MS},
-     :zen.fhir/value-set
-     {:symbol
-      hl7-fhir-us-davinci-pdex-plan-net.value-set.InsuranceProductTypeVS/value-set,
-      :strength :extensible},
-     :zen/desc "Product type"},
-    :minItems 1,
-    :maxItems 1},
-   :status #:fhir{:flags #{:MS}},
-   :identifier
-   {:type zen/vector, :every #:fhir{:flags #{:MS}}, :minItems 1},
-   :period #:fhir{:flags #{:MS}},
-   :plan
-   {:type zen/vector,
-    :slicing
-    {:slices
-     {"drug-plan"
-      {:schema
-       {:type zen/vector,
-        :minItems 1,
-        :every
-        {:type zen/map,
-         :keys
-         {:type
-          {:match
-           {:coding
-            #{{:system
-               "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
-               :code "Drug",
-               :display "Drug"}}}},
-          :network
-          {:type zen/vector,
-           :every
-           {:confirms #{zen.fhir/Reference},
-            :zen.fhir/reference {:refers #{}},
-            :zen/desc
-            "Pharmacy benefit types that are part of the drug plan"}},
-          :specificCost
-          {:type zen/vector,
-           :every
-           {:type zen/map,
-            :keys
-            {:category
-             {:fhir/flags #{:MS},
-              :zen.fhir/value-set
-              {:symbol
-               hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyBenefitTypeVS/value-set,
-               :strength :extensible},
-              :zen/desc "Pharmacy Benefit Type"},
-             :benefit
-             {:type zen/vector,
-              :every
-              {:type zen/map,
-               :keys
-               {:type
-                {:fhir/flags #{:MS},
-                 :zen.fhir/value-set
-                 {:symbol
-                  hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS/value-set,
-                  :strength :required}},
-                :cost
-                {:type zen/vector,
-                 :slicing
-                 {:slices
-                  {"copay"
-                   {:schema
-                    {:type zen/vector,
-                     :maxItems 1,
-                     :every
-                     {:type zen/map,
-                      :keys
-                      {:type
-                       {:match
-                        {:coding
-                         #{{:system
-                            "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-BenefitCostTypeCS-TEMPORARY-TRIAL-USE",
-                            :code "copay"}}}},
-                       :qualifiers
-                       {:type zen/vector,
-                        :every
-                        #:zen.fhir{:value-set
-                                   {:symbol
-                                    hl7-fhir-us-davinci-drug-formulary.value-set.CopayOptionVS/value-set,
-                                    :strength :required}}},
-                       :value
-                       {:confirms
-                        #{hl7-fhir-r4-core.MoneyQuantity/schema},
-                        :type zen/map,
-                        :keys
-                        {:value #:fhir{:flags #{:MS}},
-                         :system {:match "urn:iso:std:iso:4217"},
-                         :code {:match "USD"}},
-                        :require #{:value}}},
-                      :require #{:qualifiers}}},
-                    :filter
-                    {:engine :match,
-                     :match
-                     {:type
-                      {:coding
-                       #{{:system
-                          "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-BenefitCostTypeCS-TEMPORARY-TRIAL-USE",
-                          :code "copay"}}}}}},
-                   "coinsurance"
-                   {:schema
-                    {:type zen/vector,
-                     :maxItems 1,
-                     :every
-                     {:type zen/map,
-                      :keys
-                      {:type
-                       {:match
-                        {:coding
-                         #{{:system
-                            "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-BenefitCostTypeCS-TEMPORARY-TRIAL-USE",
-                            :code "coinsurance"}}}},
-                       :qualifiers
-                       {:type zen/vector,
-                        :every
-                        #:zen.fhir{:value-set
-                                   {:symbol
-                                    hl7-fhir-us-davinci-drug-formulary.value-set.CoinsuranceOptionVS/value-set,
-                                    :strength :required}}},
-                       :value
-                       {:type zen/map,
-                        :keys
-                        {:system {:match "http://unitsofmeasure.org"},
-                         :code {:match "%"}}}},
-                      :require #{:qualifiers}}},
-                    :filter
-                    {:engine :match,
-                     :match
-                     {:type
-                      {:coding
-                       #{{:system
-                          "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-BenefitCostTypeCS-TEMPORARY-TRIAL-USE",
-                          :code "coinsurance"}}}}}}}},
-                 :every
-                 {:type zen/map,
-                  :keys
-                  {:type
-                   #:zen.fhir{:value-set
-                              {:symbol
-                               hl7-fhir-us-davinci-drug-formulary.value-set.BenefitCostTypeVS/value-set,
-                               :strength :extensible}},
-                   :qualifiers
-                   {:type zen/vector,
-                    :every #:fhir{:flags #{:MS}},
-                    :minItems 1,
-                    :maxItems 1},
-                   :value #:fhir{:flags #{:MS}}},
-                  :require #{:qualifiers},
-                  :fhir/flags #{:MS}},
-                 :minItems 1}},
-               :require #{:cost},
-               :fhir/flags #{:MS},
-               :zen/desc "Drug tier benefit"},
-              :minItems 1}},
-            :require #{:benefit},
-            :fhir/flags #{:MS},
-            :zen/desc "Pharmacy benefit type specific cost"},
-           :minItems 1}},
-         :require #{:specificCost :type}}},
-       :filter
-       {:engine :match,
-        :match
-        {:type
-         {:coding
-          #{{:system
-             "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
-             :code "Drug",
-             :display "Drug"}}}}}}}},
-    :every
-    {:type zen/map,
-     :keys
-     {:type
-      #:zen.fhir{:value-set
-                 {:symbol
-                  hl7-terminology-r4.value-set.insuranceplan-type/value-set,
-                  :strength :extensible}}},
-     :fhir/flags #{:MS}},
-    :minItems 1},
-   :contact
-   {:type zen/vector,
-    :every
-    {:type zen/map,
-     :keys
-     {:purpose
-      #:zen.fhir{:value-set
-                 {:symbol
-                  hl7-fhir-us-davinci-drug-formulary.value-set.PlanContactTypeVS/value-set,
-                  :strength :extensible}},
-      :name
-      {:type zen/map,
-       :keys {:text #:fhir{:flags #{:MS}}},
-       :fhir/flags #{:MS}},
-      :telecom
-      {:type zen/vector,
-       :every
-       {:type zen/map,
-        :keys
-        {:system #:fhir{:flags #{:MS}}, :value #:fhir{:flags #{:MS}}},
-        :fhir/flags #{:MS}}}},
-     :zen/desc
-     "Contact information for the Insurance Plan including URLs for brochure and formulary information"}}},
-  :zen.fhir/type "InsurancePlan"}}
+ import #{hl7-fhir-us-davinci-drug-formulary.value-set.CopayOptionVS
+          hl7-fhir-us-davinci-drug-formulary.value-set.CoinsuranceOptionVS
+          zen.fhir
+          hl7-fhir-us-davinci-pdex-plan-net.value-set.InsuranceProductTypeVS
+          hl7-terminology-r4.value-set.insuranceplan-type
+          hl7-fhir-r4-core.InsurancePlan
+          hl7-fhir-us-davinci-drug-formulary.value-set.BenefitCostTypeVS
+          hl7-fhir-r4-core.MoneyQuantity
+          hl7-fhir-us-davinci-drug-formulary.value-set.PlanContactTypeVS
+          hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyBenefitTypeVS
+          hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS
+          hl7-fhir-us-davinci-drug-formulary.usdf-InsurancePlanLocation},
+ schema {:zen.fhir/version "0.6.6-8",
+         :confirms #{hl7-fhir-r4-core.InsurancePlan/schema
+                     zen.fhir/Resource},
+         :zen/tags #{zen.fhir/profile-schema zen/schema},
+         :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PayerInsurancePlan",
+         :require #{:coverage :type :status :identifier :plan},
+         :type zen/map,
+         :zen/desc "The Payer InsurancePlan that defines the health insurance product, which include coverage benefits that are offered, and additional information about the offering, such as a coverage area, contact information, brochure locations, etc. The health insurance product offers one or more types of coverage, each of which may define a plan of covered benefits with the particular cost sharing structure offered to a consumer. Health insurance plans that include drug coverage reference a formulary that provides details about drugs that are covered under the plan including requirements and limitations of the coverage specific to each drug.",
+         :keys {:coverageArea {:type zen/vector,
+                               :every {:fhir/flags #{:MS},
+                                       :confirms #{zen.fhir/Reference},
+                                       :zen.fhir/reference {:refers #{hl7-fhir-us-davinci-drug-formulary.usdf-InsurancePlanLocation/schema}}}},
+                :meta {:type zen/map,
+                       :keys {:lastUpdated {:fhir/flags #{:MS}}},
+                       :require #{:lastUpdated}},
+                :name {:fhir/flags #{:MS}},
+                :coverage {:type zen/vector,
+                           :slicing {:slices {"drug-coverage" {:schema {:type zen/vector,
+                                                                        :minItems 1,
+                                                                        :every {:type zen/map,
+                                                                                :keys {:extension {:fhir/flags #{:MS}},
+                                                                                       :type {:match {:coding #{{:system "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                                                                                                                 :code "DRUGPOL"}}}},
+                                                                                       :benefit {:type zen/vector,
+                                                                                                 :slicing {:slices {"drug-plan" {:schema {:type zen/vector,
+                                                                                                                                          :minItems 1,
+                                                                                                                                          :every {:type zen/map,
+                                                                                                                                                  :keys {:type {:match {:coding #{{:system "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                                                                                                                                                                                   :code "Drug",
+                                                                                                                                                                                   :display "Drug"}}}}}}},
+                                                                                                                                 :filter {:engine :match,
+                                                                                                                                          :match {:type {:coding #{{:system "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                                                                                                                                                                    :code "Drug",
+                                                                                                                                                                    :display "Drug"}}}}}}}},
+                                                                                                 :every {:type zen/map,
+                                                                                                         :keys {:type {:zen.fhir/value-set {:symbol hl7-terminology-r4.value-set.insuranceplan-type/value-set,
+                                                                                                                                            :strength :extensible}}}}}},
+                                                                                :require #{:extension}}},
+                                                               :filter {:engine :match,
+                                                                        :match {:type {:coding #{{:system "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                                                                                                  :code "DRUGPOL"}}}}}}}},
+                           :every {:type zen/map,
+                                   :keys {:type {:fhir/flags #{:MS}}},
+                                   :fhir/flags #{:MS}},
+                           :minItems 1},
+                :type {:type zen/vector,
+                       :every {:fhir/flags #{:MS},
+                               :zen.fhir/value-set {:symbol hl7-fhir-us-davinci-pdex-plan-net.value-set.InsuranceProductTypeVS/value-set,
+                                                    :strength :extensible},
+                               :zen/desc "Product type"},
+                       :minItems 1,
+                       :maxItems 1},
+                :status {:fhir/flags #{:MS}},
+                :identifier {:type zen/vector,
+                             :every {:fhir/flags #{:MS}},
+                             :minItems 1},
+                :period {:fhir/flags #{:MS}},
+                :plan {:type zen/vector,
+                       :slicing {:slices {"drug-plan" {:schema {:type zen/vector,
+                                                                :minItems 1,
+                                                                :every {:type zen/map,
+                                                                        :keys {:type {:match {:coding #{{:system "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                                                                                                         :code "Drug",
+                                                                                                         :display "Drug"}}}},
+                                                                               :network {:type zen/vector,
+                                                                                         :every {:confirms #{zen.fhir/Reference},
+                                                                                                 :zen.fhir/reference {:refers #{}},
+                                                                                                 :zen/desc "Pharmacy benefit types that are part of the drug plan"}},
+                                                                               :specificCost {:type zen/vector,
+                                                                                              :every {:type zen/map,
+                                                                                                      :keys {:category {:fhir/flags #{:MS},
+                                                                                                                        :zen.fhir/value-set {:symbol hl7-fhir-us-davinci-drug-formulary.value-set.PharmacyBenefitTypeVS/value-set,
+                                                                                                                                             :strength :extensible},
+                                                                                                                        :zen/desc "Pharmacy Benefit Type"},
+                                                                                                             :benefit {:type zen/vector,
+                                                                                                                       :every {:type zen/map,
+                                                                                                                               :keys {:type {:fhir/flags #{:MS},
+                                                                                                                                             :zen.fhir/value-set {:symbol hl7-fhir-us-davinci-drug-formulary.value-set.DrugTierVS/value-set,
+                                                                                                                                                                  :strength :required}},
+                                                                                                                                      :cost {:type zen/vector,
+                                                                                                                                             :slicing {:slices {"copay" {:schema {:type zen/vector,
+                                                                                                                                                                                  :maxItems 1,
+                                                                                                                                                                                  :every {:type zen/map,
+                                                                                                                                                                                          :keys {:type {:match {:coding #{{:system "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-BenefitCostTypeCS-TEMPORARY-TRIAL-USE",
+                                                                                                                                                                                                                           :code "copay"}}}},
+                                                                                                                                                                                                 :qualifiers {:type zen/vector,
+                                                                                                                                                                                                              :every {:zen.fhir/value-set {:symbol hl7-fhir-us-davinci-drug-formulary.value-set.CopayOptionVS/value-set,
+                                                                                                                                                                                                                                           :strength :required}}},
+                                                                                                                                                                                                 :value {:confirms #{hl7-fhir-r4-core.MoneyQuantity/schema},
+                                                                                                                                                                                                         :type zen/map,
+                                                                                                                                                                                                         :keys {:value {:fhir/flags #{:MS}},
+                                                                                                                                                                                                                :system {:match "urn:iso:std:iso:4217"},
+                                                                                                                                                                                                                :code {:match "USD"}},
+                                                                                                                                                                                                         :require #{:value}}},
+                                                                                                                                                                                          :require #{:qualifiers}}},
+                                                                                                                                                                         :filter {:engine :match,
+                                                                                                                                                                                  :match {:type {:coding #{{:system "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-BenefitCostTypeCS-TEMPORARY-TRIAL-USE",
+                                                                                                                                                                                                            :code "copay"}}}}}},
+                                                                                                                                                                "coinsurance" {:schema {:type zen/vector,
+                                                                                                                                                                                        :maxItems 1,
+                                                                                                                                                                                        :every {:type zen/map,
+                                                                                                                                                                                                :keys {:type {:match {:coding #{{:system "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-BenefitCostTypeCS-TEMPORARY-TRIAL-USE",
+                                                                                                                                                                                                                                 :code "coinsurance"}}}},
+                                                                                                                                                                                                       :qualifiers {:type zen/vector,
+                                                                                                                                                                                                                    :every {:zen.fhir/value-set {:symbol hl7-fhir-us-davinci-drug-formulary.value-set.CoinsuranceOptionVS/value-set,
+                                                                                                                                                                                                                                                 :strength :required}}},
+                                                                                                                                                                                                       :value {:type zen/map,
+                                                                                                                                                                                                               :keys {:system {:match "http://unitsofmeasure.org"},
+                                                                                                                                                                                                                      :code {:match "%"}}}},
+                                                                                                                                                                                                :require #{:qualifiers}}},
+                                                                                                                                                                               :filter {:engine :match,
+                                                                                                                                                                                        :match {:type {:coding #{{:system "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-BenefitCostTypeCS-TEMPORARY-TRIAL-USE",
+                                                                                                                                                                                                                  :code "coinsurance"}}}}}}}},
+                                                                                                                                             :every {:type zen/map,
+                                                                                                                                                     :keys {:type {:zen.fhir/value-set {:symbol hl7-fhir-us-davinci-drug-formulary.value-set.BenefitCostTypeVS/value-set,
+                                                                                                                                                                                        :strength :extensible}},
+                                                                                                                                                            :qualifiers {:type zen/vector,
+                                                                                                                                                                         :every {:fhir/flags #{:MS}},
+                                                                                                                                                                         :minItems 1,
+                                                                                                                                                                         :maxItems 1},
+                                                                                                                                                            :value {:fhir/flags #{:MS}}},
+                                                                                                                                                     :require #{:qualifiers},
+                                                                                                                                                     :fhir/flags #{:MS}},
+                                                                                                                                             :minItems 1}},
+                                                                                                                               :require #{:cost},
+                                                                                                                               :fhir/flags #{:MS},
+                                                                                                                               :zen/desc "Drug tier benefit"},
+                                                                                                                       :minItems 1}},
+                                                                                                      :require #{:benefit},
+                                                                                                      :fhir/flags #{:MS},
+                                                                                                      :zen/desc "Pharmacy benefit type specific cost"},
+                                                                                              :minItems 1}},
+                                                                        :require #{:specificCost
+                                                                                   :type}}},
+                                                       :filter {:engine :match,
+                                                                :match {:type {:coding #{{:system "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                                                                                          :code "Drug",
+                                                                                          :display "Drug"}}}}}}}},
+                       :every {:type zen/map,
+                               :keys {:type {:zen.fhir/value-set {:symbol hl7-terminology-r4.value-set.insuranceplan-type/value-set,
+                                                                  :strength :extensible}}},
+                               :fhir/flags #{:MS}},
+                       :minItems 1},
+                :contact {:type zen/vector,
+                          :every {:type zen/map,
+                                  :keys {:purpose {:zen.fhir/value-set {:symbol hl7-fhir-us-davinci-drug-formulary.value-set.PlanContactTypeVS/value-set,
+                                                                        :strength :extensible}},
+                                         :name {:type zen/map,
+                                                :keys {:text {:fhir/flags #{:MS}}},
+                                                :fhir/flags #{:MS}},
+                                         :telecom {:type zen/vector,
+                                                   :every {:type zen/map,
+                                                           :keys {:system {:fhir/flags #{:MS}},
+                                                                  :value {:fhir/flags #{:MS}}},
+                                                           :fhir/flags #{:MS}}}},
+                                  :zen/desc "Contact information for the Insurance Plan including URLs for brochure and formulary information"}}},
+         :zen.fhir/type "InsurancePlan"}}

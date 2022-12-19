@@ -1,28 +1,19 @@
 {ns hl7-fhir-us-davinci-drug-formulary.usdf-InsurancePlanLocation,
- import
- #{zen.fhir
-   hl7-fhir-r4-core.location-boundary-geojson
-   hl7-fhir-r4-core.Location},
- schema
- {:zen/tags #{zen.fhir/profile-schema zen/schema},
-  :zen/desc
-  "A Location describing a geographic region or are where the insurance plan coverage is available.",
-  :zen.fhir/type "Location",
-  :zen.fhir/profileUri
-  "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-InsurancePlanLocation",
-  :zen.fhir/version "0.6.6-7",
-  :confirms #{hl7-fhir-r4-core.Location/schema zen.fhir/Resource},
-  :type zen/map,
-  :keys
-  {:meta {:type zen/map, :require #{:lastUpdated}},
-   :region
-   {:confirms #{hl7-fhir-r4-core.location-boundary-geojson/schema},
-    :fhir/extensionUri
-    "http://hl7.org/fhir/StructureDefinition/location-boundary-geojson",
-    :fhir/flags #{:MS},
-    :zen/desc
-    "Associated Region (GeoJSON) [MustSupport for this element is optional if there is support for address]"},
-   :address
-   {:fhir/flags #{:MS},
-    :zen/desc
-    "Physical location [MustSupport for this element is optional if there is support for Extension:location-boundary-geojson]"}}}}
+ import #{zen.fhir
+          hl7-fhir-r4-core.location-boundary-geojson
+          hl7-fhir-r4-core.Location},
+ schema {:zen/tags #{zen.fhir/profile-schema zen/schema},
+         :zen/desc "A Location describing a geographic region or are where the insurance plan coverage is available.",
+         :zen.fhir/type "Location",
+         :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-InsurancePlanLocation",
+         :zen.fhir/version "0.6.6-8",
+         :confirms #{hl7-fhir-r4-core.Location/schema
+                     zen.fhir/Resource},
+         :type zen/map,
+         :keys {:meta {:type zen/map, :require #{:lastUpdated}},
+                :region {:confirms #{hl7-fhir-r4-core.location-boundary-geojson/schema},
+                         :fhir/extensionUri "http://hl7.org/fhir/StructureDefinition/location-boundary-geojson",
+                         :fhir/flags #{:MS},
+                         :zen/desc "Associated Region (GeoJSON) [MustSupport for this element is optional if there is support for address]"},
+                :address {:fhir/flags #{:MS},
+                          :zen/desc "Physical location [MustSupport for this element is optional if there is support for Extension:location-boundary-geojson]"}}}}

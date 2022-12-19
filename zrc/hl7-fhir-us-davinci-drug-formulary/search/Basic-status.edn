@@ -1,12 +1,11 @@
 {ns hl7-fhir-us-davinci-drug-formulary.search.Basic-status,
  import #{zen.fhir},
- search
- {:zen/tags #{zen.fhir/search},
-  :fhir/id "Basic-status",
-  :fhir/url
-  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-status",
-  :fhir/type "token",
-  :name "status",
-  :expr
-  {:Basic
-   {:knife [], :jsonpath [], :data-types #{}, :template :token}}}}
+ search {:zen/tags #{zen.fhir/search},
+         :fhir/id "Basic-status",
+         :fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-status",
+         :fhir/type "token",
+         :name "status",
+         :expr {:Basic {:knife [],
+                        :jsonpath [],
+                        :data-types #{},
+                        :template :token}}}}

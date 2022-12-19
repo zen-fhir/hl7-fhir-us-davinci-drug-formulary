@@ -1,15 +1,12 @@
 {ns hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-type,
  import #{zen.fhir},
- search
- {:zen/tags #{zen.fhir/search},
-  :fhir/id "InsurancePlan-type",
-  :fhir/url
-  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-type",
-  :fhir/type "token",
-  :name "type",
-  :expr
-  {:InsurancePlan
-   {:knife [["type"]],
-    :jsonpath ["$.\"type\"[*]"],
-    :data-types #{{:type "CodeableConcept", :polymorphic? false}},
-    :template :token}}}}
+ search {:zen/tags #{zen.fhir/search},
+         :fhir/id "InsurancePlan-type",
+         :fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-type",
+         :fhir/type "token",
+         :name "type",
+         :expr {:InsurancePlan {:knife [["type"]],
+                                :jsonpath ["$.\"type\"[*]"],
+                                :data-types #{{:type "CodeableConcept",
+                                               :polymorphic? false}},
+                                :template :token}}}}

@@ -1,13 +1,11 @@
-{ns
- hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-formulary-coverage,
+{ns hl7-fhir-us-davinci-drug-formulary.search.InsurancePlan-formulary-coverage,
  import #{zen.fhir},
- search
- {:zen/tags #{zen.fhir/search},
-  :fhir/id "InsurancePlan-formulary-coverage",
-  :fhir/url
-  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-formulary-coverage",
-  :fhir/type "reference",
-  :name "formulary-coverage",
-  :expr
-  {:InsurancePlan
-   {:knife [], :jsonpath [], :data-types #{}, :template :reference}}}}
+ search {:zen/tags #{zen.fhir/search},
+         :fhir/id "InsurancePlan-formulary-coverage",
+         :fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-formulary-coverage",
+         :fhir/type "reference",
+         :name "formulary-coverage",
+         :expr {:InsurancePlan {:knife [],
+                                :jsonpath [],
+                                :data-types #{},
+                                :template :reference}}}}

@@ -1,12 +1,8 @@
-{ns
- hl7-fhir-us-davinci-drug-formulary.usdf-PriorAuthorization-extension,
+{ns hl7-fhir-us-davinci-drug-formulary.usdf-PriorAuthorization-extension,
  import #{zen.fhir hl7-fhir-r4-core.boolean},
- schema
- {:zen/tags #{zen/schema zen.fhir/structure-schema},
-  :zen/desc
-  "A Boolean indication of whether the coverage plan imposes a prior authorization requirement on this drug.",
-  :zen.fhir/type "boolean",
-  :zen.fhir/profileUri
-  "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PriorAuthorization-extension",
-  :zen.fhir/version "0.6.6-7",
-  :confirms #{hl7-fhir-r4-core.boolean/schema}}}
+ schema {:zen/tags #{zen/schema zen.fhir/structure-schema},
+         :zen/desc "A Boolean indication of whether the coverage plan imposes a prior authorization requirement on this drug.",
+         :zen.fhir/type "boolean",
+         :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PriorAuthorization-extension",
+         :zen.fhir/version "0.6.6-8",
+         :confirms #{hl7-fhir-r4-core.boolean/schema}}}

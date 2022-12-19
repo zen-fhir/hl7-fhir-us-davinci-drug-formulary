@@ -1,11 +1,8 @@
 {ns hl7-fhir-us-davinci-drug-formulary.usdf-DrugTierID-extension,
  import #{zen.fhir hl7-fhir-r4-core.CodeableConcept},
- schema
- {:zen/tags #{zen/schema zen.fhir/structure-schema},
-  :zen/desc
-  "A code that describes the coverage status of a drug in a health plan (e.g., preferred generic, specialty, etc.)",
-  :zen.fhir/type "CodeableConcept",
-  :zen.fhir/profileUri
-  "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-DrugTierID-extension",
-  :zen.fhir/version "0.6.6-7",
-  :confirms #{hl7-fhir-r4-core.CodeableConcept/schema}}}
+ schema {:zen/tags #{zen/schema zen.fhir/structure-schema},
+         :zen/desc "A code that describes the coverage status of a drug in a health plan (e.g., preferred generic, specialty, etc.)",
+         :zen.fhir/type "CodeableConcept",
+         :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-DrugTierID-extension",
+         :zen.fhir/version "0.6.6-8",
+         :confirms #{hl7-fhir-r4-core.CodeableConcept/schema}}}

@@ -1,12 +1,9 @@
-{ns
- hl7-fhir-us-davinci-drug-formulary.usdf-FormularyReference-extension,
+{ns hl7-fhir-us-davinci-drug-formulary.usdf-FormularyReference-extension,
  import #{zen.fhir},
- schema
- {:zen/tags #{zen/schema zen.fhir/structure-schema},
-  :zen/desc "Reference to the formulary this item belongs to.",
-  :zen.fhir/type "Reference",
-  :zen.fhir/profileUri
-  "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension",
-  :zen.fhir/version "0.6.6-7",
-  :confirms #{zen.fhir/Reference},
-  :zen.fhir/reference {:refers #{}}}}
+ schema {:zen/tags #{zen/schema zen.fhir/structure-schema},
+         :zen/desc "Reference to the formulary this item belongs to.",
+         :zen.fhir/type "Reference",
+         :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension",
+         :zen.fhir/version "0.6.6-8",
+         :confirms #{zen.fhir/Reference},
+         :zen.fhir/reference {:refers #{}}}}

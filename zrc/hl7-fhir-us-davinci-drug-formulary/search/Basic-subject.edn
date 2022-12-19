@@ -1,15 +1,12 @@
 {ns hl7-fhir-us-davinci-drug-formulary.search.Basic-subject,
  import #{zen.fhir},
- search
- {:zen/tags #{zen.fhir/search},
-  :fhir/id "Basic-subject",
-  :fhir/url
-  "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-subject",
-  :fhir/type "reference",
-  :name "code",
-  :expr
-  {:Basic
-   {:knife [["subject"]],
-    :jsonpath ["$.\"subject\"[*]"],
-    :data-types #{{:type "Reference", :polymorphic? false}},
-    :template :reference}}}}
+ search {:zen/tags #{zen.fhir/search},
+         :fhir/id "Basic-subject",
+         :fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-subject",
+         :fhir/type "reference",
+         :name "code",
+         :expr {:Basic {:knife [["subject"]],
+                        :jsonpath ["$.\"subject\"[*]"],
+                        :data-types #{{:type "Reference",
+                                       :polymorphic? false}},
+                        :template :reference}}}}
