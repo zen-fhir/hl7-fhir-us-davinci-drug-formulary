@@ -6,7 +6,7 @@
          :zen/desc "A Location describing a geographic region or are where the insurance plan coverage is available.",
          :zen.fhir/type "Location",
          :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-InsurancePlanLocation",
-         :zen.fhir/version "0.6.9",
+         :zen.fhir/version "0.6.10",
          :confirms #{hl7-fhir-r4-core.Location/schema
                      zen.fhir/Resource},
          :type zen/map,
