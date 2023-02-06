@@ -5,8 +5,10 @@
          :fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-period",
          :fhir/type "date",
          :name "period",
-         :expr {:Basic {:knife [],
-                        :jsonpath [],
+         :expr {:Basic {:knife [["extension"
+                                 {:url "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AvailabilityPeriod-extension"}
+                                 "value"]],
+                        :jsonpath ["$.\"extension\"?(@.\"url\"==\"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AvailabilityPeriod-extension\").\"value\"[*]"],
                         :data-types #{},
                         :template :date,
                         :sql {:where [:or]}}}}}

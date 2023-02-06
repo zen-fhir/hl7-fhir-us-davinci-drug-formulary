@@ -5,7 +5,10 @@
          :fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/InsurancePlan-formulary-coverage",
          :fhir/type "reference",
          :name "formulary-coverage",
-         :expr {:InsurancePlan {:knife [],
-                                :jsonpath [],
+         :expr {:InsurancePlan {:knife [["coverage"
+                                         "extension"
+                                         {:url "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension"}
+                                         "value"]],
+                                :jsonpath ["$.\"coverage\".\"extension\"?(@.\"url\"==\"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension\").\"value\"[*]"],
                                 :data-types #{},
                                 :template :reference}}}}

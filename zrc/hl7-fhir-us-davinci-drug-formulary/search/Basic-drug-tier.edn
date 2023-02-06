@@ -5,7 +5,9 @@
          :fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-drug-tier",
          :fhir/type "token",
          :name "drug-tier",
-         :expr {:Basic {:knife [],
-                        :jsonpath [],
+         :expr {:Basic {:knife [["extension"
+                                 {:url "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-DrugTierID-extension"}
+                                 "value"]],
+                        :jsonpath ["$.\"extension\"?(@.\"url\"==\"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-DrugTierID-extension\").\"value\"[*]"],
                         :data-types #{},
                         :template :token}}}}

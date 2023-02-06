@@ -5,7 +5,9 @@
          :fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-formulary",
          :fhir/type "reference",
          :name "formulary",
-         :expr {:Basic {:knife [],
-                        :jsonpath [],
+         :expr {:Basic {:knife [["extension"
+                                 {:url "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension"}
+                                 "value"]],
+                        :jsonpath ["$.\"extension\"?(@.\"url\"==\"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension\").\"value\"[*]"],
                         :data-types #{},
                         :template :reference}}}}

@@ -5,7 +5,9 @@
          :fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-status",
          :fhir/type "token",
          :name "status",
-         :expr {:Basic {:knife [],
-                        :jsonpath [],
+         :expr {:Basic {:knife [["extension"
+                                 {:url "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AvailabilityStatus-extension"}
+                                 "value"]],
+                        :jsonpath ["$.\"extension\"?(@.\"url\"==\"http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AvailabilityStatus-extension\").\"value\"[*]"],
                         :data-types #{},
                         :template :token}}}}
