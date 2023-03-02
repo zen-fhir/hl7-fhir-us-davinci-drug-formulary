@@ -2,15 +2,17 @@
  import #{zen.fhir},
  value-set {:zen/tags #{zen.fhir/value-set},
             :zen/desc "Type of plan contact",
-            :zen.fhir/version "0.6.15",
+            :zen.fhir/version "0.6.16-3",
             :fhir/code-systems #{{:fhir/url "http://terminology.hl7.org/CodeSystem/contactentity-type",
                                   :zen.fhir/content :bundled}
                                  {:fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-PlanContactTypeCS-TEMPORARY-TRIAL-USE",
                                   :zen.fhir/content :bundled}},
             :uri "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/PlanContactTypeVS",
             :version "2.0.0",
-            :ftr {:module "ig",
-                  :source-urls ["node_modules/hl7.fhir.us.davinci-drug-formulary"],
-                  :source-type :igs,
+            :ftr {:module "hl7-fhir-us-davinci-drug-formulary",
+                  :source-url "https://storage.googleapis.com",
+                  :source-type :cloud-storage,
                   :ftr-path "ftr",
-                  :tag "init"}}}
+                  :tag "init",
+                  :validation-index {:type :nippy,
+                                     :file "index.nippy"}}}}
