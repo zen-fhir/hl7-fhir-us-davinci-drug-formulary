@@ -2,7 +2,7 @@
  import #{zen.fhir},
  value-set {:zen/tags #{zen.fhir/value-set},
             :zen/desc "Semantic Drug codes with Term Types (TTY) of Semantic Clinical Drug (SCD), Semantic Branded Drug (SBD), Generic Pack (GPCK), or Branded Pack (BPCK)",
-            :zen.fhir/version "0.6.16-3",
+            :zen.fhir/version "0.6.17-1",
             :fhir/code-systems #{{:fhir/url "http://www.nlm.nih.gov/research/umls/rxnorm",
                                   :zen.fhir/content :not-present}},
             :uri "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/SemanticDrugVS",
