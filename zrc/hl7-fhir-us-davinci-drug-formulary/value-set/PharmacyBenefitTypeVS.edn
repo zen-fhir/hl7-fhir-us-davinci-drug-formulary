@@ -2,7 +2,7 @@
  import #{zen.fhir},
  value-set {:zen/tags #{zen.fhir/value-set},
             :zen/desc "Pharmacy benefit types. Each payer will have its own controlled vocabulary.",
-            :zen.fhir/version "0.6.28",
+            :zen.fhir/version "0.6.29",
             :fhir/code-systems #{{:fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-PharmacyBenefitTypeCS-TEMPORARY-TRIAL-USE",
                                   :zen.fhir/content :bundled}},
             :uri "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/PharmacyBenefitTypeVS",
