@@ -14,7 +14,7 @@
           hl7-fhir-us-davinci-drug-formulary.usdf-PriorAuthorizationNewStartsOnly-extension
           hl7-fhir-us-davinci-drug-formulary.usdf-QuantityLimit-extension
           hl7-fhir-us-davinci-drug-formulary.usdf-AvailabilityStatus-extension},
- schema {:zen.fhir/version "0.6.30-1",
+ schema {:zen.fhir/version "0.6.30-7",
          :confirms #{hl7-fhir-r4-core.Basic/schema zen.fhir/Resource},
          :zen/tags #{zen.fhir/profile-schema zen/schema},
          :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyItem",
