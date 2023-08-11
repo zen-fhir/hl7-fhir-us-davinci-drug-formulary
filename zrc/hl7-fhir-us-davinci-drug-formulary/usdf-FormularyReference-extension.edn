@@ -6,6 +6,6 @@
          :zen/desc "Reference to the formulary this item belongs to.",
          :zen.fhir/type "Reference",
          :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-FormularyReference-extension",
-         :zen.fhir/version "0.6.30-13",
+         :zen.fhir/version "0.6.30-14",
          :confirms #{zen.fhir/Reference},
          :zen.fhir/reference {:refers #{}}}}
