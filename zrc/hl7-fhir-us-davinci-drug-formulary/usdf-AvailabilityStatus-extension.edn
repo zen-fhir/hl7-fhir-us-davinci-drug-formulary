@@ -6,6 +6,6 @@
          :zen/desc "A boolean indicating whether the formulary item is currently available under the formulary. Drugs may appear on a formulary, but not considered \"active\" for the current year. Drugs may also be removed during the course of a plan year.",
          :zen.fhir/type "code",
          :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AvailabilityStatus-extension",
-         :zen.fhir/version "0.6.30-7",
+         :zen.fhir/version "0.6.30-10",
          :confirms #{hl7-fhir-r4-core.code/schema},
          :fhir/flags #{:MS}}}

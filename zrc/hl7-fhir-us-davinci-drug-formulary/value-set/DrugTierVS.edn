@@ -2,7 +2,7 @@
  import #{zen.fhir},
  value-set {:zen/tags #{zen.fhir/value-set},
             :zen/desc "The drug tier of a particular medication in a health plan. The base set are examples. Each plan may have its own controlled vocabulary.",
-            :zen.fhir/version "0.6.30-7",
+            :zen.fhir/version "0.6.30-10",
             :fhir/code-systems #{{:fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/CodeSystem/usdf-DrugTierCS-TEMPORARY-TRIAL-USE",
                                   :zen.fhir/content :bundled}},
             :uri "http://hl7.org/fhir/us/davinci-drug-formulary/ValueSet/DrugTierVS",
