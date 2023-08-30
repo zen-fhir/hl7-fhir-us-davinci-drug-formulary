@@ -3,12 +3,12 @@
           hl7-fhir-r4-core.GraphDefinition
           hl7-fhir-us-davinci-drug-formulary.usdf-PayerInsurancePlanBulkDataGraphDefinition},
  link-schema {:zen/tags #{zen/schema zen.fhir/structure-schema},
-              :zen.fhir/version "0.6.30-14"},
+              :zen.fhir/version "0.6.31"},
  schema {:zen/tags #{zen.fhir/profile-schema zen/schema},
          :zen/desc "A GraphDefinition defining a graph of resources to return in a query for a Formulary related Payer Insurance Plan Bulk Data request.",
          :zen.fhir/type "GraphDefinition",
          :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-PayerInsurancePlanBulkDataGraphDefinition",
-         :zen.fhir/version "0.6.30-14",
+         :zen.fhir/version "0.6.31",
          :confirms #{zen.fhir/Resource
                      hl7-fhir-r4-core.GraphDefinition/schema},
          :type zen/map,
