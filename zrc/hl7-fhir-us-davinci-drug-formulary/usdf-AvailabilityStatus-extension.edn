@@ -1,11 +1,15 @@
 {ns hl7-fhir-us-davinci-drug-formulary.usdf-AvailabilityStatus-extension,
- import #{hl7-fhir-r4-core.code zen.fhir},
+ import #{hl7-fhir-r4-core.code
+          zen.fhir
+          hl7-fhir-r4-core.value-set.publication-status},
  schema {:zen/tags #{zen.fhir/extension
                      zen/schema
                      zen.fhir/structure-schema},
          :zen/desc "A boolean indicating whether the formulary item is currently available under the formulary. Drugs may appear on a formulary, but not considered \"active\" for the current year. Drugs may also be removed during the course of a plan year.",
          :zen.fhir/type "code",
          :zen.fhir/profileUri "http://hl7.org/fhir/us/davinci-drug-formulary/StructureDefinition/usdf-AvailabilityStatus-extension",
-         :zen.fhir/version "0.6.32",
+         :zen.fhir/version "0.6.42",
          :confirms #{hl7-fhir-r4-core.code/schema},
-         :fhir/flags #{:MS}}}
+         :fhir/flags #{:MS},
+         :zen.fhir/value-set {:symbol hl7-fhir-r4-core.value-set.publication-status/value-set,
+                              :strength :required}}}

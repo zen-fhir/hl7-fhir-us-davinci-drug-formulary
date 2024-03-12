@@ -4,7 +4,7 @@
          :fhir/id "Basic-subject",
          :fhir/url "http://hl7.org/fhir/us/davinci-drug-formulary/SearchParameter/Basic-subject",
          :fhir/type "reference",
-         :name "code",
+         :name "subject",
          :expr {:Basic {:knife [["subject"]],
                         :jsonpath ["$.\"subject\"[*]"],
                         :data-types #{{:type "Reference",
